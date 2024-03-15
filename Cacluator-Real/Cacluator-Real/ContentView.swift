@@ -7,51 +7,68 @@
 
 import SwiftUI
 
-let primaryColor = Color.init(red: 43, green: 151/255, blue: 78/255, opacity: 1.0)
 
+let primaryColor = Color.init(red: 43, green: 151/255, blue: 78/255, opacity: 1.0)
+let gap:CGFloat = 70
+let fontSize:CGFloat = 30
+let buttonHeight:CGFloat = 30
+let buttonWidth:CGFloat = 30
+let buttons = {
+    
+}
 
 struct ContentView: View {
-    @State var finalValue:String = "Oui"
     @State var calExpression:[String] = []
     var body: some View {
         VStack {
             VStack {
-                Text(self.finalValue)
-                    .font(Font.custom("HelveticaNeue-Thin", size: 80))
-                    .frame(idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: .infinity, idealHeight: 100, maxHeight: .infinity)
-                    .foregroundColor(.white)
-                Text(flattenTheExpression(exps: calExpression))
-                    .font(Font.custom("HelveticaNeue-Thin", size: 24))
-                    .frame(alignment: Alignment.bottomTrailing)
-                    .foregroundColor(Color.white)
+                HStack{
+                    RoundButton(model: RoundButtonModel(text:"AC", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"+/-", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"%", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"7", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: gap, alignment: .topLeading)
+                .background(.white)
+                HStack{
+                    RoundButton(model: RoundButtonModel(text:"7", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"8", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"9", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"X", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: gap, alignment: .topLeading)
+                .background(.white)
+                HStack{
+                    RoundButton(model: RoundButtonModel(text:"4", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"5", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"6", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"-", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
+                .background(.white)
+                HStack{
+                    RoundButton(model: RoundButtonModel(text:"1", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"2", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"3", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"+", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
+                .background(.white)
+                HStack{
+                    RoundButton(model: RoundButtonModel(text:"0", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight,  buttonWidth:  buttonWidth*2))
+                    RoundButton(model: RoundButtonModel(text:".", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    RoundButton(model: RoundButtonModel(text:"=", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
+                .background(.white)
                 
-                    // This will give a bottom padding to our Text above.
-                    Spacer()
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-            .background(primaryColor)
-            VStack {
-            }
-            .background(Color.gray)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 414, maxHeight: .infinity, alignment: .topLeading)
         }
         .background(Color.black)
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
     ContentView()
-}
-
-
-func flattenTheExpression(exps: [String]) -> String {
-    
-    var calExp = ""
-    for exp in exps {
-        calExp.append(exp)
-    }
-    
-    return calExp
-    
 }
