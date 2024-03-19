@@ -1,74 +1,72 @@
-//
-//  ContentView.swift
-//  Cacluator-Real
-//
-//  Created by Benoît Pierrehumbert on 15.03.2024.
-//
-
 import SwiftUI
 
+let primaryColor = Color.init(red: 43/255, green: 151/255, blue: 78/255, opacity: 1.0)
+let fontSize: CGFloat = 30
+let buttonHeight: CGFloat = 80
 
-let primaryColor = Color.init(red: 43, green: 151/255, blue: 78/255, opacity: 1.0)
-let gap:CGFloat = 70
-let fontSize:CGFloat = 30
-let buttonHeight:CGFloat = 30
-let buttonWidth:CGFloat = 30
-let buttons = {
-    
+let screenWidth: CGFloat = UIScreen.main.bounds.width
+
+let buttonCount: CGFloat = 4
+let buttonWidth: CGFloat = getButtonSize(screenWidth: screenWidth, buttonCount: buttonCount, padding: 12)
+let spacingWidth: CGFloat = getSpacingSize(screenWidth: screenWidth, buttonWidth: buttonWidth, buttonCount: buttonCount)
+
+func getButtonSize(screenWidth: CGFloat, buttonCount: CGFloat = 4, padding: CGFloat = 20) -> CGFloat {
+    let spacingCount = buttonCount + 1
+    return (screenWidth - (spacingCount * padding)) / buttonCount
 }
 
+func getSpacingSize(screenWidth: CGFloat, buttonWidth: CGFloat, buttonCount: CGFloat = 4) -> CGFloat {
+    let totalButtonWidth = buttonWidth * buttonCount
+    let totalSpacingWidth = screenWidth - totalButtonWidth
+    let spacingCount = buttonCount + 1
+    return totalSpacingWidth / spacingCount
+}
+
+
+
+// Define your buttons in a structured array
+let buttonRows: [[(String, Color)]] = [
+    [("AC", .gray), ("+/-", .gray), ("%", .gray), ("7", .orange)],
+    [("7", .gray), ("8", .gray), ("9", .gray), ("X", .orange)],
+    [("4", .gray), ("5", .gray), ("6", .gray), ("-", .orange)],
+    [("1", .gray), ("2", .gray), ("3", .gray), ("+", .orange)],
+    [("0", .gray), (".", .gray), ("=", .orange)]
+]
+
 struct ContentView: View {
-    @State var calExpression:[String] = []
+    @State var calExpression: [String] = []
+
     var body: some View {
         VStack {
-            VStack {
-                HStack{
-                    RoundButton(model: RoundButtonModel(text:"AC", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"+/-", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"%", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"7", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+            Spacer()
+                HStack {
+                    Spacer()
+                    Text("1")
+                        .font(Font.custom("HelveticaNeue-Thin", size: 100))
+                        .foregroundColor(.white)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: gap, alignment: .topLeading)
-                .background(.white)
+                .background(Color.black)
+
+            ForEach(0..<buttonRows.count, id: \.self) { rowIndex in
                 HStack{
-                    RoundButton(model: RoundButtonModel(text:"7", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"8", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"9", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"X", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
+                    Spacer()
+                    ForEach(0..<buttonRows[rowIndex].count, id: \.self) { buttonIndex in
+                        let button = buttonRows[rowIndex][buttonIndex]
+                        RoundButton(model: RoundButtonModel(text: button.0, action: { print(button.0) }, buttonColor: button.1, buttonFontSize: fontSize, buttonHeight: buttonWidth, buttonWidth: buttonWidth))
+                    }
+                    Spacer()
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: gap, alignment: .topLeading)
-                .background(.white)
-                HStack{
-                    RoundButton(model: RoundButtonModel(text:"4", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"5", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"6", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"-", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
-                .background(.white)
-                HStack{
-                    RoundButton(model: RoundButtonModel(text:"1", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"2", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"3", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"+", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
-                .background(.white)
-                HStack{
-                    RoundButton(model: RoundButtonModel(text:"0", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight,  buttonWidth:  buttonWidth*2))
-                    RoundButton(model: RoundButtonModel(text:".", action:{print("1")}, buttonColor:.gray, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                    RoundButton(model: RoundButtonModel(text:"=", action:{print("1")}, buttonColor:.orange, buttonFontSize: fontSize, buttonHeight:  buttonHeight, buttonWidth:  buttonWidth))
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: gap, alignment: .topLeading)
-                .background(.white)
-                
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: buttonWidth+spacingWidth, alignment: .topLeading)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 414, maxHeight: .infinity, alignment: .topLeading)
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.black)
     }
+    
 }
 
 #Preview {
     ContentView()
 }
+
+

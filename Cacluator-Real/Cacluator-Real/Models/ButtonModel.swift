@@ -6,21 +6,24 @@ struct RoundButtonModel {
     var buttonColor: Color
     var buttonFontSize: CGFloat
     var buttonHeight: CGFloat
-    var buttonWidth:CGFloat
+    var buttonWidth: CGFloat
 }
 
 struct RoundButton: View {
     var model: RoundButtonModel
-    
+
     var body: some View {
         Button(action: model.action) {
-            Text(model.text)
-                .foregroundColor(.white)
-                .font(Font.custom("HelveticaNeue-Thin", size: model.buttonFontSize))
-                .padding()
-                .background(model.buttonColor)
-                .clipShape(Circle())
+            ZStack {
+                Ellipse()
+                    .fill(model.buttonColor)
+                    .frame(width: model.buttonWidth, height: model.buttonHeight)
+                Text(model.text)
+                    .foregroundColor(.white)
+                    .font(Font.custom("HelveticaNeue-Thin", size: model.buttonFontSize))
+            }
         }
         .frame(width: model.buttonWidth, height: model.buttonHeight) // Fixed size for the button
     }
 }
+
