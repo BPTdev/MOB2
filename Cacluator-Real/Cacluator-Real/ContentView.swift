@@ -1,5 +1,7 @@
 import SwiftUI
 
+var text: String = "0"
+
 let primaryColor = Color.init(red: 43/255, green: 151/255, blue: 78/255, opacity: 1.0)
 let fontSize: CGFloat = 30
 let buttonHeight: CGFloat = 80
@@ -34,16 +36,18 @@ let buttonRows: [[(String, Color)]] = [
 ]
 
 struct ContentView: View {
-    @State var calExpression: [String] = []
+    @State var displayText: String = "0"
 
     var body: some View {
         VStack {
             Spacer()
                 HStack {
                     Spacer()
-                    Text("1")
+                    Text(displayText)
                         .font(Font.custom("HelveticaNeue-Thin", size: 100))
                         .foregroundColor(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                 }
                 .background(Color.black)
 
@@ -52,7 +56,7 @@ struct ContentView: View {
                     Spacer()
                     ForEach(0..<buttonRows[rowIndex].count, id: \.self) { buttonIndex in
                         let button = buttonRows[rowIndex][buttonIndex]
-                        RoundButton(model: RoundButtonModel(text: button.0, action: { print(button.0) }, buttonColor: button.1, buttonFontSize: fontSize, buttonHeight: buttonWidth, buttonWidth: buttonWidth))
+                        RoundButton(model: RoundButtonModel(text: button.0, action: { text+=button.0 }, buttonColor: button.1, buttonFontSize: fontSize, buttonHeight: buttonWidth, buttonWidth: buttonWidth))
                     }
                     Spacer()
                 }
