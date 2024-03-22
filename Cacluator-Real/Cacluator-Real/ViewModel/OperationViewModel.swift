@@ -27,6 +27,9 @@ class OperationViewModel: ObservableObject {
         case "X":
             processOperation(input:input)
             break
+        case "/":
+            processOperation(input:input)
+            break
         case "%":
             processOperation(input:input)
             break
@@ -92,9 +95,12 @@ class OperationViewModel: ObservableObject {
             case "-":
                 result = firstNumber - secondNumber
                 break
-            case "X":
-                result = firstNumber * secondNumber
-                break
+        case "X":
+            result = firstNumber * secondNumber
+            break
+        case "/":
+            result = firstNumber / secondNumber
+            break
             case "%":
                 result = firstNumber/100
                 break
