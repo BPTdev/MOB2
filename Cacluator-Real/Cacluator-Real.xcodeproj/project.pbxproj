@@ -16,7 +16,7 @@
 		CEF774662BA45D6200255EDE /* Cacluator_RealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774652BA45D6200255EDE /* Cacluator_RealTests.swift */; };
 		CEF774702BA45D6200255EDE /* Cacluator_RealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7746F2BA45D6200255EDE /* Cacluator_RealUITests.swift */; };
 		CEF774722BA45D6200255EDE /* Cacluator_RealUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774712BA45D6200255EDE /* Cacluator_RealUITestsLaunchTests.swift */; };
-		CEF774822BA4966100255EDE /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774812BA4966100255EDE /* ButtonModel.swift */; };
+		CEF774822BA4966100255EDE /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774812BA4966100255EDE /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 		CEF7746B2BA45D6200255EDE /* Cacluator-RealUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cacluator-RealUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF7746F2BA45D6200255EDE /* Cacluator_RealUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cacluator_RealUITests.swift; sourceTree = "<group>"; };
 		CEF774712BA45D6200255EDE /* Cacluator_RealUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cacluator_RealUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CEF774812BA4966100255EDE /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
+		CEF774812BA4966100255EDE /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +80,7 @@
 		CE3B7B932BA9D02E000385D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEF774812BA4966100255EDE /* ButtonView.swift */,
 				CEF774562BA45D6000255EDE /* ContentView.swift */,
 			);
 			path = Views;
@@ -155,7 +156,6 @@
 		CEF7747E2BA4934600255EDE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CEF774812BA4966100255EDE /* ButtonModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,7 +292,7 @@
 			files = (
 				CEF774572BA45D6000255EDE /* ContentView.swift in Sources */,
 				CE3B7B962BA9D06B000385D7 /* OperationViewModel.swift in Sources */,
-				CEF774822BA4966100255EDE /* ButtonModel.swift in Sources */,
+				CEF774822BA4966100255EDE /* ButtonView.swift in Sources */,
 				CEF774552BA45D6000255EDE /* Cacluator_RealApp.swift in Sources */,
 				CED73C3B2BADD0CA009DE25D /* CalculatorViewModel.swift in Sources */,
 			);
