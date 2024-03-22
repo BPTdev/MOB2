@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3B7B962BA9D06B000385D7 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B7B952BA9D06B000385D7 /* CalculatorViewModel.swift */; };
 		CEF774552BA45D6000255EDE /* Cacluator_RealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774542BA45D6000255EDE /* Cacluator_RealApp.swift */; };
 		CEF774572BA45D6000255EDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF774562BA45D6000255EDE /* ContentView.swift */; };
 		CEF774592BA45D6200255EDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF774582BA45D6200255EDE /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE3B7B952BA9D06B000385D7 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		CEF774512BA45D6000255EDE /* Cacluator-Real.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cacluator-Real.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF774542BA45D6000255EDE /* Cacluator_RealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cacluator_RealApp.swift; sourceTree = "<group>"; };
 		CEF774562BA45D6000255EDE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3B7B932BA9D02E000385D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEF774562BA45D6000255EDE /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE3B7B942BA9D060000385D7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE3B7B952BA9D06B000385D7 /* CalculatorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CEF774482BA45D6000255EDE = {
 			isa = PBXGroup;
 			children = (
@@ -96,9 +114,10 @@
 		CEF774532BA45D6000255EDE /* Cacluator-Real */ = {
 			isa = PBXGroup;
 			children = (
+				CE3B7B942BA9D060000385D7 /* ViewModel */,
+				CE3B7B932BA9D02E000385D7 /* Views */,
 				CEF7747E2BA4934600255EDE /* Models */,
 				CEF774542BA45D6000255EDE /* Cacluator_RealApp.swift */,
-				CEF774562BA45D6000255EDE /* ContentView.swift */,
 				CEF774582BA45D6200255EDE /* Assets.xcassets */,
 				CEF7745A2BA45D6200255EDE /* Preview Content */,
 			);
@@ -269,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF774572BA45D6000255EDE /* ContentView.swift in Sources */,
+				CE3B7B962BA9D06B000385D7 /* CalculatorViewModel.swift in Sources */,
 				CEF774822BA4966100255EDE /* ButtonModel.swift in Sources */,
 				CEF774552BA45D6000255EDE /* Cacluator_RealApp.swift in Sources */,
 			);

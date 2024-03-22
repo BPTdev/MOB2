@@ -27,23 +27,24 @@ func getSpacingSize(screenWidth: CGFloat, buttonWidth: CGFloat, buttonCount: CGF
 
 
 // Define your buttons in a structured array
-let buttonRows: [[(String, Color)]] = [
-    [("AC", .gray), ("+/-", .gray), ("%", .gray), ("7", .orange)],
-    [("7", .gray), ("8", .gray), ("9", .gray), ("X", .orange)],
-    [("4", .gray), ("5", .gray), ("6", .gray), ("-", .orange)],
-    [("1", .gray), ("2", .gray), ("3", .gray), ("+", .orange)],
-    [("0", .gray), (".", .gray), ("=", .orange)]
+let buttonRows: [[(String, Color, CGFloat, CGFloat)]] = [
+    [("AC", .gray, buttonWidth, buttonWidth), ("+/-", .gray, buttonWidth, buttonWidth), ("%", .gray, buttonWidth, buttonWidth), ("/", .orange, buttonWidth, buttonWidth)],
+    [("7", .gray, buttonWidth, buttonWidth), ("8", .gray, buttonWidth, buttonWidth), ("9", .gray, buttonWidth, buttonWidth), ("X", .orange, buttonWidth, buttonWidth)],
+    [("4", .gray, buttonWidth, buttonWidth), ("5", .gray, buttonWidth, buttonWidth), ("6", .gray, buttonWidth, buttonWidth), ("-", .orange, buttonWidth, buttonWidth)],
+    [("1", .gray, buttonWidth, buttonWidth), ("2", .gray, buttonWidth, buttonWidth), ("3", .gray, buttonWidth, buttonWidth), ("+", .orange, buttonWidth, buttonWidth)],
+    [("BPT\nDEV",.black, buttonWidth, buttonWidth),("0", .gray, buttonWidth, buttonWidth), (".", .gray, buttonWidth, buttonWidth), ("=", .orange, buttonWidth, buttonWidth)]
 ]
 
 struct ContentView: View {
     @State var displayText: String = "0"
+    @StateObject var calculatorViewModel = CalculatorViewModel()
 
     var body: some View {
         VStack {
             Spacer()
                 HStack {
                     Spacer()
-                    Text(displayText)
+                    Text(calculatorViewModel.getCurrentNumber())
                         .font(Font.custom("HelveticaNeue-Thin", size: 100))
                         .foregroundColor(.white)
                         .lineLimit(1)
@@ -56,7 +57,7 @@ struct ContentView: View {
                     Spacer()
                     ForEach(0..<buttonRows[rowIndex].count, id: \.self) { buttonIndex in
                         let button = buttonRows[rowIndex][buttonIndex]
-                        RoundButton(model: RoundButtonModel(text: button.0, action: { text+=button.0 }, buttonColor: button.1, buttonFontSize: fontSize, buttonHeight: buttonWidth, buttonWidth: buttonWidth))
+                        RoundButton(model: RoundButtonModel(text: button.0, action: {calculatorViewModel.receiveInput(button.0) }, buttonColor: button.1, buttonFontSize: fontSize, buttonHeight: button.2, buttonWidth: button.3))
                     }
                     Spacer()
                 }
